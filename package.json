@@ -21,13 +21,14 @@
     "type": "git",
     "url": "git+https://github.com/algomio2000/DEV001-md-links.git"
   },
-  "author": "",
+  "author": "silvana gonzalez",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/algomio2000/DEV001-md-links/issues"
   },
   "homepage": "https://github.com/algomio2000/DEV001-md-links#readme",
   "dependencies": {
-    "jest": "^29.3.1"
+    "jest": "^29.4.0",
+    "marked": "^4.2.12"
   }
 }
