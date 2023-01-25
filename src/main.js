@@ -7,8 +7,10 @@ const marked = require('marked');
 // comprobando si la ruta es valida
 const isValidRoute = (route) => {
   if (fs.existsSync(route)) {
+    
     return true;
   } else {
+    
     return false;
   }
 };
@@ -58,29 +60,12 @@ const getMdFiles = (routeFile) => {
  
   /*debo tener un array vacio para llenar con los links, debo tener el array de archivos md, 
   la funcion o metodo parfa extarer los links*/
-  const getLinksMd = (route) => {
-    const arrayMdFiles = getMdFiles(route);
-    const renderer = new marked.Renderer();
-    const arrayofLinks = [];
-    arrayMdFiles.forEach((filePath) => {
-      const file = fs.readFileSync(filePath, 'utf8');
-      renderer.link = (urlFile, _, urlText) => {
-        arrayofLinks.push({
-          href: urlFile,
-          text: urlText,
-          path: filePath,
-        });
-      };
-      marked(file, { renderer });
-      // debug('File', marked(file.toString(), { renderer }));
-    });
-    return arrayofLinks;
-  };
-
+  console.log(isValidRoute('/example/example'));
   module.exports = {
     isValidRoute,
+    getAbsoluteRoute,
     pathIsFile,
     isMdFile,
     getMdFiles,
-    getLinksMd,
+    
   };

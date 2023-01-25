@@ -2,11 +2,16 @@
 const fs = require ('fs');
 const path = require ('path');
 const marked = require('marked'); 
+
+
 // comprobando si la ruta es valida
 const isValidRoute = (route) => {
-  if (fs.existsSync(route)) {
+
+  if (fs.existsSync('./test_example')) {
+    console.log("Funciona carajo");
     return true;
   } else {
+    console.log("Pailangas");
     return false;
   }
 };
@@ -51,11 +56,14 @@ const getMdFiles = (routeFile) => {
     };
     return arrayMdFile;
   }
-  //leer archivos y extraer los links
-  const getLinksMd = (routeFile)=>{
-    let arrayResults = [];
-    const arrayMdFile;
-  }
+ 
   /*debo tener un array vacio para llenar con los links, debotener el array de archivos md, la funcion
   o metodo parfa extarer los links*/
 
+  //var arguments = process.argv
+
+
+  var arguments = process.argv
+
+
+isValidRoute(arguments[2]);
