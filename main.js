@@ -1,5 +1,5 @@
 
-const fs = require ('fs');
+/*const fs = require ('fs');
 const path = require ('path');
 const marked = require('marked'); 
 
@@ -63,7 +63,7 @@ const getMdFiles = (routeFile) => {
   //var arguments = process.argv
 
 
-  var arguments = process.argv
+  /*var arguments = process.argv
 
 
-isValidRoute(arguments[2]);
+isValidRoute(arguments[2]);*/

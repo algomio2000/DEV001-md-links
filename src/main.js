@@ -1,19 +1,14 @@
 
 const fs = require ('fs');
 const path = require ('path');
-const marked = require('marked'); 
+//const marked = require('marked'); 
 
 
 // comprobando si la ruta es valida
-const isValidRoute = (route) => {
-  if (fs.existsSync(route)) {
-    
-    return true;
-  } else {
-    
-    return false;
-  }
-};
+
+const isValidRoute = (path) => { if (fs.existsSync(path)) { return true; } 
+else { return false; } };
+
 /*const isValidRoute = (route) => fs.existsSync(route);*/
  
 //comprobando si es una ruta absoluta
@@ -60,7 +55,7 @@ const getMdFiles = (routeFile) => {
  
   /*debo tener un array vacio para llenar con los links, debo tener el array de archivos md, 
   la funcion o metodo parfa extarer los links*/
-  console.log(isValidRoute('/example/example'));
+  console.log(isValidRoute('./test/pruebas/pruebita/prueba.md'));
   module.exports = {
     isValidRoute,
     getAbsoluteRoute,
