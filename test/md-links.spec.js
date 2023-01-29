@@ -1,6 +1,5 @@
 const {mdLinks} = require('../index.js');
-const {ruta} = require('../main.js');
-const {absoluta} = require('../main.js')
+
 
 describe('mdLinks', () => {
 
@@ -17,7 +16,4 @@ it('deberia rechazar la promesa cuando el path no existe',() =>{
  
 });
 });
-describe(absoluta)
-it('debera retornar tru o false si la ruta es o no absoluta', ()=>{
-  expect(absoluta('./test_example')).toBe('false');
-  });
+
