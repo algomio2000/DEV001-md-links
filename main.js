@@ -27,14 +27,17 @@ const getAbsoluteRoute = (inputpath) => {
    }
 //console.log(getAbsoluteRoute('C:\\Users\\balry\\OneDrive\\Documentos\\Laboratoria\\Proyecto4-MDLinks\\DEV001-md-links\\exampleFiles\\exampleFile.md'));
 
-const pathIsDirectory = (ruta) => {
-    return fs.lstatSync(ruta).isDirectory()
-  }// payhIsDirectorio es true de volver un cacth, por ahora no estamos leyendo directorios
+const pathIsDirectory = (inputpath) => {
+    return fs.lstatSync(inputpath).isDirectory()
+}
+//console.log(pathIsDirectory('\DEV001-md-links\\exampleFiles\\exampleFile.md'));
+// payhIsDirectorio es true de volver un cacth, por ahora no estamos leyendo directorios
   //averiguar si es archivo
-  const pathIsFile = function (ruta){
-    return fs.statSync(ruta).isFile()
-  } 
-
+  const pathIsFile = function (inputpath){
+    return fs.statSync(inputpath).isFile()
+  }
+  console.log(pathIsFile('\DEV001-md-links\\exampleFiles\\exampleFile.md'));
+  
 
 module.exports = {
     isValidRoute,
