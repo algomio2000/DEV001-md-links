@@ -49,7 +49,7 @@ describe('es una funcion', () => {
 
 describe('es una funcion', () => {
     const routeFalse ='test\\exampleFiles\\example.';
-    const routeTrue = 'test\\exampleFiles\\example.md';
+    const routeTrue = 'C:/Users/TecnoBot/Downloads/Recibo de matricula.pdf';
 
     expect(typeof main.pathIsFile).toBe('function');
 
