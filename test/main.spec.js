@@ -1,7 +1,7 @@
 const main = require('../main.js');
 const path = require('path');
 
-describe('isValidRoute', () => {
+/*describe('isValidRoute', () => {
 
     const routeTrue = './exampleFiles/exampleFile.md';
     const routeFalse = './thisPath/doesNotExist';
@@ -17,11 +17,11 @@ describe('isValidRoute', () => {
     it('deberia retornar false si la ruta no existe', () => {
         expect(main.isValidRoute(routeFalse)).toBe(false);
     });
-});
+});*/
 
 describe('es una funcion', () => {
-    const absoluteRoute = 'C:\\Users\\TecnoBot Academia\\Desktop\\md-links\\DEV001-md-links-1\\exampleFiles\\exampleFile.md';
-    const routeTrue = './exampleFiles/exampleFile.md';
+    const absoluteRoute = 'C:\\Users\\TecnoBot\\Desktop\\md links\\DEV001-md-links\\test\\exampleFiles\\example.md';
+    const routeTrue = 'test\\exampleFiles\\example.md';
 
     expect(typeof main.getAbsoluteRoute).toBe('function');
 
@@ -33,9 +33,10 @@ describe('es una funcion', () => {
         expect(main.getAbsoluteRoute(routeTrue)).toBe(false);
     });
 });
-    describe('es una funcion', () => {
-        const absoluteRoute ='C:\\Users\\TecnoBot Academia\\Desktop\\md-links\\DEV001-md-links-1\\exampleFiles\\exampleFile.md';
-        const routeTrue = './exampleFiles/exampleFile.md';
+    
+describe('es una funcion', () => {
+        const absoluteRoute ='C:\\Users\\TecnoBot\\Desktop\\md links\\DEV001-md-links\\test\\exampleFiles\\example.md';
+        const routeTrue = 'test\\exampleFiles\\example.md';
     
         expect(typeof main.changefAbsoluteRoute).toBe('function');
     
@@ -45,3 +46,20 @@ describe('es una funcion', () => {
         });
         
 });
+
+describe('es una funcion', () => {
+    const routeFalse ='test\\exampleFiles\\example.';
+    const routeTrue = 'C:/Users/TecnoBot/Downloads/Recibo de matricula.pdf';
+
+    expect(typeof main.pathIsFile).toBe('function');
+
+    it('deberia retornar true si la ruta es un archivo', () => {
+
+        expect(main.pathIsFile(routeTrue)).toBe(true);
+    });
+    it('deberia retornar false si la ruta no es un archivo', () => {
+
+        expect(main.pathIsFile(routeFalse)).toBe(false);
+    }); 
+});
+

@@ -2,16 +2,6 @@ const fs = require('fs');
 const path = require('path');
 const marked = require('marked');
 
-// comprobando si la ruta es valida
-const isValidRoute = (inputpath) => {
-    if (fs.existsSync(inputpath)) {
-        //console.log("Funciona carajo");
-        return true;
-    } else {
-        //console.log("Pailangas");
-        return false;
-    }
-}; console.log(isValidRoute('C:\\Users\\balry\\OneDrive\\Documentos\\Laboratoria\\Proyecto4-MDLinks\\DEV001-md-links\\exampleFiles\\exampleFile.md'));
 
 //averiguar si la ruta es absoluta o no
 const getAbsoluteRoute = (inputpath) => {
@@ -25,18 +15,21 @@ const getAbsoluteRoute = (inputpath) => {
    const changefAbsoluteRoute = (inputpath)=>{
    return path.resolve(inputpath);
    }
-//console.log(getAbsoluteRoute('C:\\Users\\balry\\OneDrive\\Documentos\\Laboratoria\\Proyecto4-MDLinks\\DEV001-md-links\\exampleFiles\\exampleFile.md'));
+   //console.log(changefAbsoluteRoute('./exampleFiles/exampleFile.md'));
 
-const pathIsDirectory = (inputpath) => {
-    return fs.lstatSync(inputpath).isDirectory()
-}
-//console.log(pathIsDirectory('\DEV001-md-links\\exampleFiles\\exampleFile.md'));
-// payhIsDirectorio es true de volver un cacth, por ahora no estamos leyendo directorios
+//console.log(getAbsoluteRoute('./exampleFiles/exampleFile.md'));
+
+
   //averiguar si es archivo
-  const pathIsFile = function (inputpath){
-    return fs.statSync(inputpath).isFile()
+  const pathIsFile = (inputpath)=>{
+    const statsObj = fs.statSync(inputpath); 
+    if(statsObj.isFile()){
+        return true;
+    }else{
+        return false;
+    }
   }
-  //console.log(pathIsFile('C:\Users\TecnoBot Academia\Desktop\md-links\DEV001-md-links-1\index.js'));
+  console.log(pathIsFile('\DEV001-md-links\\exampleFiles\\exampleFile.md'));
   
   //buscar archivos md
   const getMdFiles = (pathFile) => {
@@ -57,8 +50,9 @@ const pathIsDirectory = (inputpath) => {
   };
 console.log(arrayMdFile('./test_example/file1.md'));
 module.exports = {
-    isValidRoute,
     getAbsoluteRoute,
-    changefAbsoluteRoute
+    changefAbsoluteRoute,
+    pathIsFile,
+    getLinksMd,
 };
 
