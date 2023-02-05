@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-//const marked = require('marked');
+const marked = require('marked');
 
 // comprobando si la ruta es valida
 const isValidRoute = (inputpath) => {
@@ -36,9 +36,26 @@ const pathIsDirectory = (inputpath) => {
   const pathIsFile = function (inputpath){
     return fs.statSync(inputpath).isFile()
   }
-  console.log(pathIsFile('\DEV001-md-links\\exampleFiles\\exampleFile.md'));
+  //console.log(pathIsFile('C:\Users\TecnoBot Academia\Desktop\md-links\DEV001-md-links-1\index.js'));
   
-
+  //buscar archivos md
+  const getMdFiles = (pathFile) => {
+    let arrayMdFile = [];
+    const route = getAbsoluteRoute(pathFile);
+    if (isFile(inputpath)) {
+      if (isMdFile(inputpath)) {
+        arrayMdFile.push(inputpath);
+      }
+    } else {
+      const arrayOfFiles = fs.readdirSync(inputpath);
+      arrayOfFiles.forEach((file) => {
+        const arrayMd = getMdFiles(path.join(inputpath, file));
+        arrayMdFile = arrayMdFile.concat(arrayMd);
+      });
+    }
+    return arrayMdFile;
+  };
+console.log(arrayMdFile('./test_example/file1.md'));
 module.exports = {
     isValidRoute,
     getAbsoluteRoute,
