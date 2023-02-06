@@ -13,10 +13,11 @@ const getAbsoluteRoute = (inputpath) => {
    };
 //convertir ruta en absoluta
    const changefAbsoluteRoute = (inputpath)=>{
+    console.log(inputpath('./exampleFiles/exampleFile.md'));
+
    return path.resolve(inputpath);
    }
-   //.log(changefAbsoluteRoute('./exampleFiles/exampleFile.md'));
-
+  
 //console.log(getAbsoluteRoute('./exampleFiles/exampleFile.md'));
 
 
@@ -29,7 +30,7 @@ const getAbsoluteRoute = (inputpath) => {
         return false;
     }
   };
-console.log(pathIsFile('DEV001-md-links\test\exampleFiles\ejemplo2.md'));
+//console.log(pathIsFile('DEV001-md-links\test\exampleFiles\ejemplo2.md'));
   
 // FUNCION PARA SABER SI ES UN ARCHIVO .MD
   const isMdFile = (route) => (path.extname(route) === '.md');   
@@ -66,7 +67,7 @@ const getLinksMd = (inputpath )=> {
   });
   return arrayofLinks;
 };
-//console.log(getLinksMd('C:\Users\TecnoBot\Desktop\md links\DEV001-md-links\test\exampleFiles\ejemplo2.md'));
+//console.log(getLinksMd('C:Users\\TecnoBot\\Desktop\\md links\\DEV001-md-links\\test\\exampleFiles\\ejemplo2.md'));
 
   //console.log(getLinksMd('\DEV001-md-links\\exampleFiles\\exampleFile.md'));
 
