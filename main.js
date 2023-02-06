@@ -4,21 +4,20 @@ const marked = require('marked');
 
 
 //averiguar si la ruta es absoluta o no
-const getAbsoluteRoute = (inputpath) => {
-    if (path.isAbsolute(inputpath)) {
-        return true;
-    }else{
-        return false;
-    }
-   };
 //convertir ruta en absoluta
-   const changefAbsoluteRoute = (inputpath)=>{
-    console.log(inputpath('./exampleFiles/exampleFile.md'));
+const getAbsoluteRoute = (inputpath) => {
+  if (path.isAbsolute(inputpath)) {
+    return (inputpath);
+  } else {
+    return path.resolve(inputpath);
+  }
+};
 
-   return path.resolve(inputpath);
-   }
+   
+   
+   
   
-//console.log(getAbsoluteRoute('./exampleFiles/exampleFile.md'));
+//console.log(getAbsoluteRoute('C:Users\\TecnoBot\\Desktop\\md links\\DEV001-md-links\\test\\exampleFiles\\ejemplo2.md'));
 
 
   //averiguar si es archivo
@@ -30,14 +29,14 @@ const getAbsoluteRoute = (inputpath) => {
         return false;
     }
   };
-//console.log(pathIsFile('DEV001-md-links\test\exampleFiles\ejemplo2.md'));
+console.log(pathIsFile('DEV001-md-links\test\exampleFiles\ejemplo2.md'));
   
 // FUNCION PARA SABER SI ES UN ARCHIVO .MD
   const isMdFile = (route) => (path.extname(route) === '.md');   
 //
   const getMdFiles = (routeFile) => {
     let arrayMdFile = [];
-    const route = changefAbsoluteRoute(routeFile);
+    const route = getAbsoluteRoute(routeFile);
     if (pathIsFile(route)) {
       if (isMdFile(route)) {
         arrayMdFile.push(route);
@@ -73,10 +72,11 @@ const getLinksMd = (inputpath )=> {
 
   module.exports = {
     getAbsoluteRoute,
-    changefAbsoluteRoute,
+   
     pathIsFile,
     isMdFile,
     getMdFiles,
     getLinksMd,
 };
+
 
