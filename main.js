@@ -28,31 +28,34 @@ const getAbsoluteRoute = (inputpath) => {
     }else{
         return false;
     }
-  }
-  console.log(pathIsFile('\DEV001-md-links\\exampleFiles\\exampleFile.md'));
-  
-  //buscar archivos md
-  const getMdFiles = (pathFile) => {
+  };
+
+  // FUNCION PARA SABER SI ES UN ARCHIVO .MD
+const  isMdFile  =  ( ruta )  =>  ( ruta . extname ( ruta )  ===  '.md' ) ;
+   //
+  const getMdFiles = (routeFile) => {
     let arrayMdFile = [];
-    const route = getAbsoluteRoute(pathFile);
-    if (isFile(inputpath)) {
-      if (isMdFile(inputpath)) {
-        arrayMdFile.push(inputpath);
+    const route = getAbsoluteRoute(routeFile);
+    if (pathIsFile(route)) {
+      if (isMdFile(route)) {
+        arrayMdFile.push(route);
       }
     } else {
-      const arrayOfFiles = fs.readdirSync(inputpath);
+      const arrayOfFiles = fs.readdirSync(route);
       arrayOfFiles.forEach((file) => {
-        const arrayMd = getMdFiles(path.join(inputpath, file));
+        const arrayMd = getMdFiles(path.join(route, file));
         arrayMdFile = arrayMdFile.concat(arrayMd);
       });
     }
     return arrayMdFile;
   };
-console.log(arrayMdFile('./test_example/file1.md'));
-module.exports = {
+  console.log(getMdFiles('\DEV001-md-links\\exampleFiles\\exampleFile.md'));
+
+  module.exports = {
     getAbsoluteRoute,
     changefAbsoluteRoute,
     pathIsFile,
-    getLinksMd,
+    isMdFile,
+    getMdFiles,
 };
 
