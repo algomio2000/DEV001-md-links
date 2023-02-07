@@ -13,39 +13,49 @@ const getAbsoluteRoute = (inputpath) => {
   }
 };
 
-   
-   
-   
-  
+
+
+
+
 //console.log(getAbsoluteRoute('C:Users\\TecnoBot\\Desktop\\md links\\DEV001-md-links\\test\\exampleFiles\\ejemplo2.md'));
 
 
-  //averiguar si es archivo
-  const pathIsFile = (inputpath)=>{
-    const statsObj = fs.statSync(inputpath); 
-    if(statsObj.isFile()){
-        return true;
-    }else{
-        return false;
-    }
-  };
-console.log(pathIsFile('DEV001-md-links\test\exampleFiles\ejemplo2.md'));
-  
+//averiguar si es archivo
+const pathIsFile = (inputpath) => {
+  const statsObj = fs.statSync(inputpath);
+  if (statsObj.isFile()) {
+    return true;
+  } else {
+    return false;
+  }
+};
+//console.log(pathIsFile('DEV001-md-links\test\exampleFiles\ejemplo2.md'));
+
 // FUNCION PARA SABER SI ES UN ARCHIVO .MD
-  const isMdFile = (route) => (path.extname(route) === '.md');   
-//
-  const getMdFiles = (routeFile) => {
-    let arrayMdFile = [];
-    const route = getAbsoluteRoute(routeFile);
-    if (pathIsFile(route)) {
-      if (isMdFile(route)) {
-        arrayMdFile.push(route);
-      }
-       };
-      };
-  //console.log(getMdFiles('C:\Users\TecnoBot\Desktop\md links\DEV001-md-links\test\exampleFiles\ejemplo2.md')); 
-  // FUNCION PARA RUTAS ABSOLUTAS DE LOS ARCHIVOS ENCONTRADOS
-const getLinksMd = (inputpath )=> {
+const isMdFile = (route) => (path.extname(route) === '.md');
+//console.log(isMdFile('C:\Users\TecnoBot\Desktop\md links\DEV001-md-links\test\exampleFiles\ejemplo2.md'))  
+
+//Funcion que busca los archivos MD
+
+const getMdFiles = (routeFile) => {
+  let arrayMdFile = [];
+  const route = getAbsoluteRoute(routeFile);
+  if (pathIsFile(route)) {
+
+    if (isMdFile(route)) {
+      arrayMdFile.push(route);
+    } else {
+      return(route);
+    }
+  }
+  return arrayMdFile;
+};
+
+
+console.log(getMdFiles('C:\Users\TecnoBot\Desktop\md links\DEV001-md-links\test\exampleFiles\ejemplo2.md'));
+
+// FUNCION PARA RUTAS ABSOLUTAS DE LOS ARCHIVOS ENCONTRADOS
+const getMdLinks = (inputpath) => {
   const arrayMdFiles = getMdFiles(inputpath);
   //console.log(arrayMdFiles);
   const renderer = new marked.Renderer();
@@ -53,7 +63,7 @@ const getLinksMd = (inputpath )=> {
   const arrayofLinks = [];
   arrayMdFiles.forEach((filePath) => {
     const file = fs.readFileSync(filePath, 'utf8');
-    
+
     renderer.link = (urlFile, _, urlText) => {
       arrayofLinks.push({
         href: urlFile,
@@ -62,21 +72,20 @@ const getLinksMd = (inputpath )=> {
       });
     };
     marked(file, { renderer });
-    
+
   });
   return arrayofLinks;
 };
-//console.log(getLinksMd('C:Users\\TecnoBot\\Desktop\\md links\\DEV001-md-links\\test\\exampleFiles\\ejemplo2.md'));
+//console.log(arrayofLinks);
+console.log(getMdLinks('C:\Users\TecnoBot\Desktop\md links\DEV001-md-links\test\exampleFiles\ejemplo2.md'));
+//console.log(getMdLinks('./ejemplo2.md'));
+module.exports = {
+  getAbsoluteRoute,
 
-  //console.log(getLinksMd('\DEV001-md-links\\exampleFiles\\exampleFile.md'));
-
-  module.exports = {
-    getAbsoluteRoute,
-   
-    pathIsFile,
-    isMdFile,
-    getMdFiles,
-    getLinksMd,
+  pathIsFile,
+  isMdFile,
+  getMdFiles,
+  getMdLinks,
 };
 
 
