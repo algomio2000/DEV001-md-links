@@ -29,7 +29,7 @@ const getAbsoluteRoute = (inputpath) => {
         return false;
     }
   };
-console.log(pathIsFile('DEV001-md-links\test\exampleFiles\ejemplo2.md'));
+//console.log(pathIsFile('DEV001-md-links\test\exampleFiles\ejemplo2.md'));
   
 // FUNCION PARA SABER SI ES UN ARCHIVO .MD
   const isMdFile = (route) => (path.extname(route) === '.md');   
@@ -40,10 +40,11 @@ console.log(pathIsFile('DEV001-md-links\test\exampleFiles\ejemplo2.md'));
     if (pathIsFile(route)) {
       if (isMdFile(route)) {
         arrayMdFile.push(route);
+        console.log(arrayMdFile);
       }
        };
       };
-  //console.log(getMdFiles('C:\Users\TecnoBot\Desktop\md links\DEV001-md-links\test\exampleFiles\ejemplo2.md')); 
+  console.log(getMdFiles('test\exampleFiles\ejemplo2.md')); 
   // FUNCION PARA RUTAS ABSOLUTAS DE LOS ARCHIVOS ENCONTRADOS
 const getLinksMd = (inputpath )=> {
   const arrayMdFiles = getMdFiles(inputpath);
