@@ -60,25 +60,20 @@ const getMdFiles = (routeFile) => {
     marked(file, { renderer });
   });
   return arrayofLinks;
-};*/
-const getLinksMd = (route) => {
-  const arrayMdFiles = getMdFiles(route);
-  const file = fs.readFileSync(filePath, 'utf8');
-  const renderer = new marked.Renderer();
-  const arrayofLinks = [];
+};*/const getLinksMd= (inputhpath)=>{
+const renderer = new marked.Renderer();
+const arrayofLinks = [];
 
-  renderer.link = (urlFile, _, urlText) => {
-    arrayofLinks.push({
-      href: urlFile,
-      text: urlText,
-      path: filePath
-    });
-  };
-
-  marked(file, { renderer });
-
-  return arrayofLinks;
+renderer.link = (urlFile, _, urlText) => {
+  arrayofLinks.push({
+    href: urlFile,
+    text: urlText,
+  });
 };
+};
+marked(file, { renderer });
+
+return arrayofLinks;
 console.log(getLinksMd('test\\exampleFiles\\ejemplo2.md'));
 
 //console.log(getLinksMd('\DEV001-md-links\\exampleFiles\\exampleFile.md'));
