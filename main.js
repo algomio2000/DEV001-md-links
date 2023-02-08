@@ -91,26 +91,33 @@ path: 'C:\\Users\\TecnoBot\\Desktop\\md links\\DEV001-md-links\\test\\exampleFil
 }
 ]
 const getStatus = (arrayofLinks) => {
-  let promises = arrayofLinks.map((link) => fetch.fetch(link.href)
+  let promises = arrayofLinks.map((link) => fetch(link.href)
+
   .then((response) => {
       if (response.status >= 200 && response.status < 400){
+        
           return {
               ...link,
               status: response.status,
               message: response.statusText,
           }
-      }      
+      }else {return {
+        ...link,
+        status: 'FAIL',
+        message: 'NOT FOUND'
+    }}   
   })
   .catch(() => {
-      return {
-          ...link,
-          status: 'FAIL',
-          message: 'NOT FOUND'
-      }
+      return 
+          
+           'NOT FOUND'
+      
   })) 
   return Promise.all(promises);
 }
-console.log(getStatus);
+getStatus(arrayofLinks)
+.then((response) => console.log(response))
+.catch(error => console.log(error));
 
 
 
@@ -122,7 +129,7 @@ module.exports = {
   pathIsFile,
   isMdFile,
   getMdFiles,
-  getLinksMd,
+  //getLinksMd,
   getStatus,
 };
 
