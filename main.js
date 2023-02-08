@@ -33,7 +33,8 @@ const getAbsoluteRoute = (inputpath) => {
   
 // FUNCION PARA SABER SI ES UN ARCHIVO .MD
   const isMdFile = (route) => (path.extname(route) === '.md');   
-//
+
+  //
   const getMdFiles = (routeFile) => {
     let arrayMdFile = [];
     const route = getAbsoluteRoute(routeFile);
@@ -45,12 +46,11 @@ const getAbsoluteRoute = (inputpath) => {
        };
       };
   console.log(getMdFiles('test\exampleFiles\ejemplo2.md')); 
+  
   // FUNCION PARA RUTAS ABSOLUTAS DE LOS ARCHIVOS ENCONTRADOS
 const getLinksMd = (inputpath )=> {
   const arrayMdFiles = getMdFiles(inputpath);
-  //console.log(arrayMdFiles);
   const renderer = new marked.Renderer();
-  //console.log('esto retorna',renderer);
   const arrayofLinks = [];
   arrayMdFiles.forEach((filePath) => {
     const file = fs.readFileSync(filePath, 'utf8');
