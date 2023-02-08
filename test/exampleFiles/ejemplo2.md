@@ -1,26 +1,11 @@
-[Markdown](https://es.wikipedia.org/wiki/Markdown) es un lenguaje de marcado
-ligero muy popular entre developers. Es usado en muchísimas plataformas que
-manejan texto plano (GitHub, foros, blogs, ...) y es muy común
-encontrar varios archivos en ese formato en cualquier tipo de repositorio
-(empezando por el tradicional `README.md`).
+# Introducción a la Programación
 
-Estos archivos `Markdown` normalmente contienen _links_ (vínculos/ligas) que
-muchas veces están rotos o ya no son válidos y eso perjudica mucho el valor de
-la información que se quiere compartir.
+-   [Introducción a la programación](https://www.digitalocean.com/community/tutorials/introduction-to-programming-with-python)  - Esta guía te ayudará a descubrir los conceptos básicos de la programación.
+-   [¿Qué es un lenguaje de programación?](https://www.digitalocean.com/community/tutorials/what-is-a-programming-language)  - Esta guía ofrece una explicación detallada de los principales lenguajes de programación y cómo pueden ayudar a los programadores a crear aplicaciones.
+-   [Tipos de lenguajes de programación](https://www.digitalocean.com/community/tutorials/types-of-programming-languages)  - Esta guía explica los diferentes tipos de lenguajes de programación y cómo pueden ser usados para crear aplicaciones.
 
-Dentro de una comunidad de código abierto, nos han propuesto crear una
-herramienta usando [Node.js](https://nodejs.org/), que lea y analice archivos
-en formato `Markdown`, para verificar los links que contengan y reportar
-algunas estadísticas.
+## Herramientas de programación
 
-![md-links](https://user-images.githubusercontent.com/110297/42118443-b7a5f1f0-7bc8-11e8-96ad-9cc5593715a6.jpg)
-
-## 2. Resumen del proyecto
-
-En este proyecto crearás una herramienta de línea de comando (CLI) así como tu
-propia librería (o biblioteca - library) en JavaScript.
-
-En esta oportunidad nos alejamos un poco del navegador para construir un
-programa que se ejecute usando Node.js. Aprenderemos sobre procesos
-(`process.env`, `process.argv`, ...), cómo interactuar con el sistema archivos,
-cómo hacer consultas de red, etc.
+-   [Git](https://www.digitalocean.com/community/tutorials/what-is-git-and-how-to-use-it)  - Descubre cómo usar git para controlar versiones y colaborar con otros programadores.
+-   [Herramientas de línea de comandos](https://www.digitalocean.com/community/tutorials/command-line-tools-for-developers)  - Esta guía te mostrará cómo usar las herramientas de línea de comandos para mejorar tu flujo de trabajo.
+-   [Editores de código](https://www.digitalocean.com/)  - Esta guía te enseñará cómo usar editores de código para mejorar tu flujo de trabajo
