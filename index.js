@@ -1,10 +1,19 @@
 const fs = require('fs');
 const path = require('path');
+const {
+  getAbsoluteRoute,
+  pathIsFile,
+  isMdFile,
+  getMdFiles,
+  getLinksMd,
+  getStatus,
+} = require ('./main.js')
 
 const mdLinks = (path, options) => {
  return new Promise((resolve, reject) => {
       //identifica si la ruta existe
     if (fs.existsSync(path)){
+      
       //¿es una ruta absoluta?
        // convertir a una ruta absoluta
       // averiguar si la ruta es un archivo
