@@ -16,7 +16,7 @@ const getAbsoluteRoute = (inputpath) => {
 
 //averiguar si es un archivo
 const pathIsFile = (inputpath) => fs.statSync(inputpath).isFile();
-//console.log(pathIsFile('index.js'));
+//console.log(pathIsFile('C:\\Users\\TecnoBot Academia\\Desktop\\md-links\\DEV001-md-links-1\\coverage'));
 
 // FUNCION PARA SABER SI ES UN ARCHIVO .MD
 const isMdFile = (route) => (path.extname(route) === '.md');
@@ -39,8 +39,8 @@ const getMdFiles = (routeFile) => {
 };
 //console.log(getMdFiles('test\\exampleFiles\\ejemplo2.md')); 
 
-// FUNCION PARA RUTAS ABSOLUTAS DE LOS ARCHIVOS ENCONTRADOS
-/*const getLinksMd = (route) => {
+// FUNCION para extraer los links de los archivos md
+const getLinksMd = (route) => {
   const arrayMdFiles = getMdFiles(route);
   const renderer = new marked.Renderer();
   const arrayofLinks = [];
@@ -58,8 +58,8 @@ const getMdFiles = (routeFile) => {
   });
   return arrayofLinks;
   
-};*/
-const arrayofLinks = [{
+};
+/*const arrayofLinks = [{
 href: 'https://www.digitalocean.com/community/tutorials/introduction-to-programming-with-python',
 text: 'Introducción a la programación',
 path: 'C:\\Users\\TecnoBot\\Desktop\\md links\\DEV001-md-links\\test\\exampleFiles\\ejemplo2.md'
@@ -89,7 +89,9 @@ href: 'https://www.digitalocean.com/',
 text: 'Editores de código',
 path: 'C:\\Users\\TecnoBot\\Desktop\\md links\\DEV001-md-links\\test\\exampleFiles\\ejemplo2.md'
 }
-]
+]*/
+//funcion para revisar el stados de los enlaces y devuelva el codigo correcto
+//y ok o mensaje de error
 const getStatus = (arrayofLinks) => {
   let promises = arrayofLinks.map((link) => fetch(link.href)
 
@@ -108,16 +110,14 @@ const getStatus = (arrayofLinks) => {
     }}   
   })
   .catch(() => {
-      return 
+      return "Error"
           
-           'NOT FOUND'
-      
   })) 
   return Promise.all(promises);
 }
-getStatus(arrayofLinks)
+/*getStatus(arrayofLinks)
 .then((response) => console.log(response))
-.catch(error => console.log(error));
+.catch(error => console.log(error));*/
 
 
 
@@ -129,7 +129,7 @@ module.exports = {
   pathIsFile,
   isMdFile,
   getMdFiles,
-  //getLinksMd,
+  getLinksMd,
   getStatus,
 };
 
