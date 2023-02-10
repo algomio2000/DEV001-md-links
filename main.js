@@ -37,7 +37,7 @@ const getMdFiles = (routeFile) => {
     return arrayMdFile;
   };
 };
-console.log(getMdFiles('test\\exampleFiles\\ejemplo2.md')); 
+//console.log(getMdFiles('test\\exampleFiles\\ejemplo2.md')); 
 
 // FUNCION para extraer los links de los archivos md
 const getLinksMd = (array) => {
@@ -61,7 +61,7 @@ const getLinksMd = (array) => {
   
 };
 
-const arrayofLinks = [{
+/* arrayofLinks = [{
 href: 'https://www.digitalocean.com/community/tutorials/introduction-to-programming-with-python',
 text: 'Introducción a la programación',
 path: 'C:\\Users\\TecnoBot\\Desktop\\md links\\DEV001-md-links\\test\\exampleFiles\\ejemplo2.md'
@@ -91,7 +91,7 @@ href: 'https://www.digitalocean.com/',
 text: 'Editores de código',
 path: 'C:\\Users\\TecnoBot\\Desktop\\md links\\DEV001-md-links\\test\\exampleFiles\\ejemplo2.md'
 }
-]
+]*/
 //funcion para revisar el stados de los enlaces y devuelva el codigo correcto
 //y ok o mensaje de error
 const getStatus = (arrayofLinks) => {

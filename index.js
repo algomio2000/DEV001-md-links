@@ -7,41 +7,30 @@ const {
   getMdFiles,
   getLinksMd,
   getStatus,
-} = require ('./main.js')
+} = require('./main.js')
 
 const mdLinks = (path, options) => {
- return new Promise((resolve, reject) => {
-      //identifica si la ruta existe
-    if (fs.existsSync(path)){
-      const absoluteRoute= getAbsoluteRoute(path)
-      const mdArray= getMdFiles(absoluteRoute)
-      if(options === 'validate'){
-        const arrayLinks= getLinksMd(mdArray);
-
+  return new Promise((resolve, reject) => {
+    //identifica si la ruta existe
+    if (fs.existsSync(path)) {
+      const absoluteRoute = getAbsoluteRoute(path)
+      const mdArray = getMdFiles(absoluteRoute)
+      if (options.validate) {
+        const arrayLinks = getLinksMd(mdArray);
         resolve(getStatus(arrayLinks))
-      }else{
+      } else {
         resolve(getLinksMd(mdArray))
       }
-      
-      
-    }else{
-      reject('la ruta no es valida')
+    } else {
+      reject('La ruta no es valida')
     }
-      //¿es una ruta absoluta?
-       // convertir a una ruta absoluta
-      // averiguar si la ruta es un archivo
-      //averiguar si es un archivo md
-
-
-    }
- )  
-     
-  };
-
-
-module.exports =  {
-mdLinks,
+  })
 };
-mdLinks('test\\exampleFiles\\ejemplo2.md'  ).then((response)=>{
+
+
+module.exports = {
+  mdLinks,
+};
+/*mdLinks('test\\exampleFiles\\ejemplo2.md',{validate:true}).then((response) => {
   console.log(response)
-});
+});*/
