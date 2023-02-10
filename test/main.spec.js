@@ -1,7 +1,7 @@
 const main = require('../main.js');
 const path = require('path');
 const { equal } = require('assert');
-const getStatus = require('../main.js')
+//const getStatus = require('../main.js')
 
 
 describe('es una funcion', () => {
@@ -33,12 +33,13 @@ describe('es una funcion', () => {
         expect(main.pathIsFile(routeFalse)).toBe(false);
     });
 });
+
 it('getStatus debe devolver el código de estado y el mensaje correctos para cada enlace', () => {
     const arrayOfLinks = [
         { href: 'https://www.digitalocean.com/community/tutorials/command-line-tools-for-developers' },
         { href: 'https://www.digitalocean.com/community/tutorials/command-line-tools-for-developers' }
     ];
-    return getStatus(arrayOfLinks).then(results => {
+    return main.getStatus(arrayOfLinks).then(results => {
     
     
             expect(results).toBe([

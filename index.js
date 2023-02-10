@@ -13,23 +13,35 @@ const mdLinks = (path, options) => {
  return new Promise((resolve, reject) => {
       //identifica si la ruta existe
     if (fs.existsSync(path)){
+      const absoluteRoute= getAbsoluteRoute(path)
+      const mdArray= getMdFiles(absoluteRoute)
+      if(options === 'validate'){
+        const arrayLinks= getLinksMd(mdArray);
+
+        resolve(getStatus(arrayLinks))
+      }else{
+        resolve(getLinksMd(mdArray))
+      }
       
+      
+    }else{
+      reject('la ruta no es valida')
+    }
       //¿es una ruta absoluta?
        // convertir a una ruta absoluta
       // averiguar si la ruta es un archivo
       //averiguar si es un archivo md
 
 
-    }else{
-       //si no existe la ruta rechaza la promesa
-      reject('La ruta no es valida');
     }
+ )  
      
-     
-  });
+  };
 
-}
 
 module.exports =  {
 mdLinks,
 };
+mdLinks('test\\exampleFiles\\ejemplo2.md'  ).then((response)=>{
+  console.log(response)
+});

@@ -37,14 +37,15 @@ const getMdFiles = (routeFile) => {
     return arrayMdFile;
   };
 };
-//console.log(getMdFiles('test\\exampleFiles\\ejemplo2.md')); 
+console.log(getMdFiles('test\\exampleFiles\\ejemplo2.md')); 
 
 // FUNCION para extraer los links de los archivos md
-const getLinksMd = (route) => {
-  const arrayMdFiles = getMdFiles(route);
+const getLinksMd = (array) => {
+  //const arrayMdFiles = getMdFiles(route);
+ 
   const renderer = new marked.Renderer();
   const arrayofLinks = [];
-  arrayMdFiles.forEach((filePath) => {
+  array.forEach((filePath) => {
     const file = fs.readFileSync(filePath, 'utf8');
 
     renderer.link = (urlFile, _, urlText) => {
@@ -59,7 +60,8 @@ const getLinksMd = (route) => {
   return arrayofLinks;
   
 };
-/*const arrayofLinks = [{
+
+const arrayofLinks = [{
 href: 'https://www.digitalocean.com/community/tutorials/introduction-to-programming-with-python',
 text: 'Introducción a la programación',
 path: 'C:\\Users\\TecnoBot\\Desktop\\md links\\DEV001-md-links\\test\\exampleFiles\\ejemplo2.md'
@@ -89,7 +91,7 @@ href: 'https://www.digitalocean.com/',
 text: 'Editores de código',
 path: 'C:\\Users\\TecnoBot\\Desktop\\md links\\DEV001-md-links\\test\\exampleFiles\\ejemplo2.md'
 }
-]*/
+]
 //funcion para revisar el stados de los enlaces y devuelva el codigo correcto
 //y ok o mensaje de error
 const getStatus = (arrayofLinks) => {
