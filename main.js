@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const marked = require('marked');
-const fetch = require ('node-fetch');
+const fetch = require('node-fetch');
 
 
 //averiguar si la ruta es absoluta o no
@@ -37,12 +37,12 @@ const getMdFiles = (routeFile) => {
     return arrayMdFile;
   };
 };
-//console.log(getMdFiles('test\\exampleFiles\\ejemplo2.md')); 
+//console.log(getMdFiles('test\\exampleFiles\\example3.md')); 
 
 // FUNCION para extraer los links de los archivos md
 const getLinksMd = (array) => {
   //const arrayMdFiles = getMdFiles(route);
- 
+
   const renderer = new marked.Renderer();
   const arrayofLinks = [];
   array.forEach((filePath) => {
@@ -58,72 +58,43 @@ const getLinksMd = (array) => {
     marked.marked(file, { renderer });
   });
   return arrayofLinks;
-  
 };
+/*console.log(getLinksMd([
+  
+    'C:\\Users\\TecnoBot Academia\\Desktop\\md-links\\DEV001-md-links-1\\test\\exampleFiles\\example3.md' 
+   
+]));*/
 
-/* arrayofLinks = [{
-href: 'https://www.digitalocean.com/community/tutorials/introduction-to-programming-with-python',
-text: 'Introducción a la programación',
-path: 'C:\\Users\\TecnoBot\\Desktop\\md links\\DEV001-md-links\\test\\exampleFiles\\ejemplo2.md'
-},
-{
-href: 'https://www.digitalocean.com/community/tutorials/what-is-a-programming-language',
-text: '¿Qué es un lenguaje de programación?',
-path: 'C:\\Users\\TecnoBot\\Desktop\\md links\\DEV001-md-links\\test\\exampleFiles\\ejemplo2.md'
-},
-{
-href: 'https://www.digitalocean.com/community/tutorials/types-of-programming-languages',
-text: 'Tipos de lenguajes de programación',
-path: 'C:\\Users\\TecnoBot\\Desktop\\md links\\DEV001-md-links\\test\\exampleFiles\\ejemplo2.md'
-},
-{
-href: 'https://www.digitalocean.com/community/tutorials/what-is-git-and-how-to-use-it',
-text: 'Git',
-path: 'C:\\Users\\TecnoBot\\Desktop\\md links\\DEV001-md-links\\test\\exampleFiles\\ejemplo2.md'
-},
-{
-href: 'https://www.digitalocean.com/community/tutorials/command-line-tools-for-developers',
-text: 'Herramientas de línea de comandos',
-path: 'C:\\Users\\TecnoBot\\Desktop\\md links\\DEV001-md-links\\test\\exampleFiles\\ejemplo2.md'
-},
-{
-href: 'https://www.digitalocean.com/',
-text: 'Editores de código',
-path: 'C:\\Users\\TecnoBot\\Desktop\\md links\\DEV001-md-links\\test\\exampleFiles\\ejemplo2.md'
-}
-]*/
 //funcion para revisar el stados de los enlaces y devuelva el codigo correcto
 //y ok o mensaje de error
 const getStatus = (arrayofLinks) => {
   let promises = arrayofLinks.map((link) => fetch(link.href)
 
-  .then((response) => {
-      if (response.status >= 200 && response.status < 400){
-        
-          return {
-              ...link,
-              status: response.status,
-              message: response.statusText,
-          }
-      }else {return {
-        ...link,
-        status: 'FAIL',
-        message: 'NOT FOUND'
-    }}   
-  })
-  .catch(() => {
+    .then((response) => {
+      if (response.status >= 200 && response.status < 400) {
+
+        return {
+          ...link,
+          status: response.status,
+          message: response.statusText,
+        }
+      } else {
+        return {
+          ...link,
+          status: 'FAIL',
+          message: 'NOT FOUND'
+        }
+      }
+    })
+    .catch(() => {
       return "Error"
-          
-  })) 
+
+    }))
   return Promise.all(promises);
 }
 /*getStatus(arrayofLinks)
 .then((response) => console.log(response))
 .catch(error => console.log(error));*/
-
-
-
-
 
 
 module.exports = {
