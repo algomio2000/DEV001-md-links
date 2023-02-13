@@ -5,13 +5,13 @@ const { equal } = require('assert');
 
 
 describe('es una funcion', () => {
-    const absoluteRoute = 'C:\\Users\\TecnoBot Academia\\Desktop\\md-links\\DEV001-md-links-1\\test\\exampleFiles\\example.md'
-    const routerelative = 'test\\exampleFiles\\example.md'
+    const absoluteRoute = 'C:\\Users\\TecnoBot\\Desktop\\md links\\DEV001-md-links\\DEV001-md-links\\test\\exampleFiles\\ejemplo2.md'
+    const routerelative = 'DEV001-md-links\\test\\exampleFiles\\ejemplo2.md'
     expect(typeof main.getAbsoluteRoute).toBe('function');
 
     it('deberia reornar una ruta absoluta si la ruta es relativa ', () => {
 
-        expect(main.getAbsoluteRoute(routerelative)).toBe(absoluteRoute);
+        expect(main.getAbsoluteRoute(routerelative)).toEqual(absoluteRoute);
     });
 
 });
