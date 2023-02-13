@@ -18,7 +18,7 @@ describe('es una funcion', () => {
 
 
 describe('es una funcion', () => {
-    const routeFalse = 'C:\\Users\\TecnoBot Academia\\Desktop\\md-links\\DEV001-md-links-1\\coverage';
+    const routeFalse = 'C:\\Users\\TecnoBot\\Desktop\\md links\\DEV001-md-links\\';
     const routeTrue = 'test\\exampleFiles\\example.md';
 
     expect(typeof main.pathIsFile).toBe('function');
@@ -33,7 +33,7 @@ describe('es una funcion', () => {
     });
 });
 describe('es una funcion', () => {
-    const routeFalse = 'C:\\Users\\TecnoBot Academia\\Desktop\\md-links\\DEV001-md-links-1\\coverage';
+    const routeFalse = 'DEV001-md-links\cli.js';
     const routeTrue = 'test\\exampleFiles\\example.md';
 
     expect(typeof main.isMdFile).toBe('function');
@@ -50,47 +50,48 @@ describe('es una funcion', () => {
 
 
 describe('es una funcion', () => {
-    const routeMD = 'test\\exampleFiles\\ejemplo2.md'
-    const FileMd = [
-        'C:\\Users\\TecnoBot Academia\\Desktop\\md-links\\DEV001-md-links-1\\test\\exampleFiles\\ejemplo2.md'
+    const routeFile = 'C:\\Users\\TecnoBot\\Desktop\\md links\\DEV001-md-links\\test\\exampleFiles\\example3.md';
+    const arrayMdFile = ['C:\\Users\\TecnoBot\\Desktop\\md links\\DEV001-md-links\\test\\exampleFiles\\example3.md'
     ]
     expect( typeof main.getMdFiles).toBe('function');
 
     it('getMdFiles debe devolver un array con los arcivos md encontrados', () => {
 
-        expect(main.getMdFiles(routeMD)).toEqual(FileMd);
+        expect(main.getMdFiles(routeFile)).toEqual(arrayMdFile);
     })
 });
 
 describe('es una funcion', () => {
-    const arraylink = [
+    const arrayofLinks =[
         {
           href: 'https://www.digitalocean.com/community/tutorials/what-is-git-and-how-to-use-it',
           text: 'Git',
-          path: 'C:\\Users\\TecnoBot Academia\\Desktop\\md-links\\DEV001-md-links-1\\test\\exampleFiles\\example3.md'
+          path: 'C:\\Users\\TecnoBot\\Desktop\\md links\\DEV001-md-links\\test\\exampleFiles\\example3.md'
         },
         {
           href: 'https://www.digitalocean.com/community/tutorials/command-line-tools-for-developers',
           text: 'Herramientas de línea de comandos',
-          path: 'C:\\Users\\TecnoBot Academia\\Desktop\\md-links\\DEV001-md-links-1\\test\\exampleFiles\\example3.md'
+          path: 'C:\\Users\\TecnoBot\\Desktop\\md links\\DEV001-md-links\\test\\exampleFiles\\example3.md'
         },
         {
           href: 'https://www.digitalocean.com/',
           text: 'Editores de código',
-          path: 'C:\\Users\\TecnoBot Academia\\Desktop\\md-links\\DEV001-md-links-1\\test\\exampleFiles\\example3.md'
+          path: 'C:\\Users\\TecnoBot\\Desktop\\md links\\DEV001-md-links\\test\\exampleFiles\\example3.md'
         }
       ]
-    const FileMd = [
-        'C:\\Users\\TecnoBot Academia\\Desktop\\md-links\\DEV001-md-links-1\\test\\exampleFiles\\example3.md'
-    ]
+    const array = 
+    [
+        'C:\\Users\\TecnoBot\\Desktop\\md links\\DEV001-md-links\\test\\exampleFiles\\example3.md'
+      ]
+        
+    
     expect( typeof main.getLinksMd).toBe('function');
 
-    it('getMdFiles debe devolver un array con los arcivos md encontrados', () => {
+    it('getLinksMd debe devolver un array con los arcivos md encontrados', () => {
 
-        expect(main.getLinksMd(FileMd)).toEqual(arraylink);
+        expect(main.getLinksMd(array)).toEqual(arrayofLinks);
     })
 });
-
 
 it('getStatus debe devolver el código de estado y el mensaje correctos para cada enlace', () => {
     const arrayOfLinks = [

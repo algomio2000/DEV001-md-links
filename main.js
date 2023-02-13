@@ -16,7 +16,7 @@ const getAbsoluteRoute = (inputpath) => {
 
 //averiguar si es un archivo
 const pathIsFile = (inputpath) => fs.statSync(inputpath).isFile();
-//console.log(pathIsFile('C:\\Users\\TecnoBot Academia\\Desktop\\md-links\\DEV001-md-links-1\\coverage'));
+//console.log(pathIsFile('C:\\Users\\TecnoBot\\Desktop\\md links\\DEV001-md-links\\'));
 
 // FUNCION PARA SABER SI ES UN ARCHIVO .MD
 const isMdFile = (route) => (path.extname(route) === '.md');
@@ -37,7 +37,7 @@ const getMdFiles = (routeFile) => {
     return arrayMdFile;
   };
 };
-//console.log(getMdFiles('test\\exampleFiles\\example3.md')); 
+//console.log(getMdFiles('C:\\Users\\TecnoBot\\Desktop\\md links\\DEV001-md-links\\test\\exampleFiles\\example3.md')); 
 
 // FUNCION para extraer los links de los archivos md
 const getLinksMd = (array) => {
@@ -59,11 +59,14 @@ const getLinksMd = (array) => {
   });
   return arrayofLinks;
 };
-/*console.log(getLinksMd([
+/*console.log(getLinksMd(
   
-    'C:\\Users\\TecnoBot Academia\\Desktop\\md-links\\DEV001-md-links-1\\test\\exampleFiles\\example3.md' 
-   
-]));*/
+  [
+  'C:\\Users\\TecnoBot\\Desktop\\md links\\DEV001-md-links\\test\\exampleFiles\\example3.md'
+]
+  
+
+));*/
 
 //funcion para revisar el stados de los enlaces y devuelva el codigo correcto
 //y ok o mensaje de error
